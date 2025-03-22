@@ -318,8 +318,9 @@ class KeyProcessor:
 
         # Call handler.
         from prompt_toolkit.buffer import EditReadOnlyBuffer
-
+        from prompt_toolkit.log import logger
         try:
+            logger.debug("Calling handler %s, key_press=%s, loc=%s:%s", handler.handler.__qualname__, handler.keys, handler.handler.__code__.co_filename, handler.handler.__code__.co_firstlineno)
             handler.call(event)
             self._fix_vi_cursor_position(event)
 
